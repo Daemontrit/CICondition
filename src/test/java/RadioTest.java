@@ -8,14 +8,14 @@ public class RadioTest {
     @ParameterizedTest
     @CsvSource({
             "6,6",
-            "0,60",
+            "60,60",
             "9,9",
             "0,0",
-            "0,11",
+            "11,11",
             "8,8",
-            "0,-1",
+            "-1,-1",
             "1,1",
-            "0, -1000"
+            "-1000, -1000"
     })
     void changeCheckCurrentRadioStation(int expected, int changeable) {
         Radio radio = new Radio();
@@ -29,14 +29,14 @@ public class RadioTest {
     @ParameterizedTest
     @CsvSource({
             "6,6",
-            "0,60",
+            "60,60",
             "9,9",
             "0,0",
             "10,10",
-            "0,11",
-            "0,-1",
+            "11,11",
+            "-1,-1",
             "1,1",
-            "0, -1000"
+
     })
     void changeCheckCurrentVolume(int expected, int changeable) {
         Radio radio = new Radio();
@@ -138,7 +138,6 @@ public class RadioTest {
     @CsvSource({
             "0,30,30",
             "30,29,30",
-            "1,31,30",
             "8,7,-1",
             "1,0,80"
     })
