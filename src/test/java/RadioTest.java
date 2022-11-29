@@ -1,5 +1,4 @@
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -123,9 +122,9 @@ public class RadioTest {
 
     @ParameterizedTest
     @CsvSource({
-            "30,30",
-            "200,200",
-            "10,10",
+            "29,30",
+            "199,200",
+            "9,10",
     })
     void checkCurrentRadioStation(int expected, int maxCurrentRadioStation) {
         Radio radio = new Radio(maxCurrentRadioStation);
@@ -149,6 +148,7 @@ public class RadioTest {
         int actual = radio.getCurrentRadioStation();
         Assertions.assertEquals(expected, actual);
     }
+
 
 
 }

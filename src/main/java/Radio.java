@@ -3,7 +3,7 @@ public class Radio {
     private int currentVolume;
     private int maxCurrentRadioStation=10;
 
-    public Radio(){};
+    public Radio(){}
     public Radio(int maxCurrentRadioStation){
        if (maxCurrentRadioStation>0)
            this.maxCurrentRadioStation=maxCurrentRadioStation;
@@ -11,7 +11,7 @@ public class Radio {
     }
 
     public int getMaxCurrentRadioStation() {
-        return maxCurrentRadioStation;
+        return maxCurrentRadioStation-1;
     }
 
     public int getCurrentRadioStation() {
