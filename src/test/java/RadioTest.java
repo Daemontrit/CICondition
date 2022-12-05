@@ -11,20 +11,21 @@ public class RadioTest {
             "0,60",
             "9,9",
             "0,0",
-            "0,10",
+            "0,11",
             "8,8",
             "0,-1",
             "1,1",
             "0, -1000"
     })
-    void changeCheckCurrentRadioStation(int expected,int changeable) {
+    void changeCheckCurrentRadioStation(int expected, int changeable) {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(changeable);
         int actual = radio.getCurrentRadioStation();
 
-        Assertions.assertEquals(expected,actual);
+        Assertions.assertEquals(expected, actual);
 
     }
+
     @ParameterizedTest
     @CsvSource({
             "6,6",
@@ -37,14 +38,15 @@ public class RadioTest {
             "1,1",
             "0, -1000"
     })
-    void changeCheckCurrentVolume(int expected,int changeable) {
+    void changeCheckCurrentVolume(int expected, int changeable) {
         Radio radio = new Radio();
         radio.setCurrentVolume(changeable);
         int actual = radio.getCurrentVolume();
 
-        Assertions.assertEquals(expected,actual);
+        Assertions.assertEquals(expected, actual);
 
     }
+
     @ParameterizedTest
     @CsvSource({
             "1,0",
@@ -55,15 +57,16 @@ public class RadioTest {
             "6,5",
             "0,9"
     })
-    void changeCheckMethodNext(int expected,int changeable) {
+    void changeCheckMethodNext(int expected, int changeable) {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(changeable);
         radio.next();
         int actual = radio.getCurrentRadioStation();
 
-        Assertions.assertEquals(expected,actual);
+        Assertions.assertEquals(expected, actual);
 
     }
+
     @ParameterizedTest
     @CsvSource({
             "9,0",
@@ -74,13 +77,13 @@ public class RadioTest {
             "4,5",
             "8,9"
     })
-    void changeCheckMethodPrev(int expected,int changeable) {
+    void changeCheckMethodPrev(int expected, int changeable) {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(changeable);
         radio.prev();
         int actual = radio.getCurrentRadioStation();
 
-        Assertions.assertEquals(expected,actual);
+        Assertions.assertEquals(expected, actual);
 
     }
 
@@ -91,13 +94,13 @@ public class RadioTest {
             "10,10",
             "10,9"
     })
-    void changeCheckMethodValuePlus(int expected, int changeable){
-        Radio radio=new Radio();
+    void changeCheckMethodValuePlus(int expected, int changeable) {
+        Radio radio = new Radio();
         radio.setCurrentVolume(changeable);
         radio.valuePlus();
-        int actual=radio.getCurrentVolume();
+        int actual = radio.getCurrentVolume();
 
-        Assertions.assertEquals(expected,actual);
+        Assertions.assertEquals(expected, actual);
 
     }
 
@@ -108,16 +111,42 @@ public class RadioTest {
             "9,10",
             "8,9"
     })
-    void changeCheckMethodValueMinus(int expected, int changeable){
-        Radio radio=new Radio();
+    void changeCheckMethodValueMinus(int expected, int changeable) {
+        Radio radio = new Radio();
         radio.setCurrentVolume(changeable);
         radio.valueMinus();
-        int actual=radio.getCurrentVolume();
+        int actual = radio.getCurrentVolume();
 
-        Assertions.assertEquals(expected,actual);
+        Assertions.assertEquals(expected, actual);
 
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "29,30",
+            "199,200",
+            "9,10",
+    })
+    void checkCurrentRadioStation(int expected, int maxCurrentRadioStation) {
+        Radio radio = new Radio(maxCurrentRadioStation);
+        int actual = radio.getMaxCurrentRadioStation();
+        Assertions.assertEquals(expected, actual);
 
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "0,29,30",
+            "29,28,30",
+            "1,31,30",
+            "1,0,80"
+    })
+    void constructOneValueMetodNext(int expected, int changeable, int maxCurrentRadiostation) {
+        Radio radio = new Radio(maxCurrentRadiostation);
+        radio.setCurrentRadioStation(changeable);
+        radio.next();
+        int actual = radio.getCurrentRadioStation();
+        Assertions.assertEquals(expected, actual);
+    }
 
 }
