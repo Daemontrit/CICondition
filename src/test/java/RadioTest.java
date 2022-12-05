@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -54,7 +55,7 @@ public class RadioTest {
             "4,3",
             "5,4",
             "6,5",
-            "0,10"
+            "0,9"
     })
     void changeCheckMethodNext(int expected, int changeable) {
         Radio radio = new Radio();
@@ -68,7 +69,7 @@ public class RadioTest {
 
     @ParameterizedTest
     @CsvSource({
-            "10,0",
+            "9,0",
             "0,1",
             "1,2",
             "2,3",
@@ -135,10 +136,9 @@ public class RadioTest {
 
     @ParameterizedTest
     @CsvSource({
-            "0,30,30",
-            "30,29,30",
+            "0,29,30",
+            "29,28,30",
             "1,31,30",
-            "8,7,-1",
             "1,0,80"
     })
     void constructOneValueMetodNext(int expected, int changeable, int maxCurrentRadiostation) {
@@ -148,6 +148,5 @@ public class RadioTest {
         int actual = radio.getCurrentRadioStation();
         Assertions.assertEquals(expected, actual);
     }
-
 
 }
